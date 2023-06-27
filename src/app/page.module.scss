@@ -1,0 +1,53 @@
+.main{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #100F10;
+  flex-direction: column;
+
+  .containerHero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .heroImage{
+      max-width: 450px;
+      object-fit: contain;//para não deixar a imagem distorcida
+    }
+
+    h1{
+      color: #FFF;
+      margin: 28px;
+      line-height: 150%;
+      text-align: center;
+    }
+
+    .containerButton{
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+  
+      button{
+        padding: 8px 10px;
+        width: 200px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-weight: 700;
+        &:hover{
+          color: #FFF;
+          background-color: #100F10;
+          border: 1px solid #FFF;
+          transition: .3s;
+        }
+      }
+    }
+  }
+
+ 
+
+ 
+}
