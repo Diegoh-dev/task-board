@@ -19,13 +19,13 @@ export default function Home() {
 
         <h1>Sistema feito para você organizar <br/> seus estudos e tarefas.</h1>
 
-        <div className={styles.containerButton}>
-        <button>
+        <div className={styles.containerSection}>
+        <section className={styles.sectionsDados}>
           +7mil posts
-        </button>
-        <button>
+        </section>
+        <section className={styles.sectionsDados}>
           +1mil comentários
-        </button>
+        </section>
       </div>
       </div>
 

@@ -15,6 +15,10 @@
     .heroImage{
       max-width: 450px;
       object-fit: contain;//para não deixar a imagem distorcida
+
+      @media screen and (max-width:580px){
+        max-width: 80%;
+      }
     }
 
     h1{
@@ -22,32 +26,45 @@
       margin: 28px;
       line-height: 150%;
       text-align: center;
+
+      @media screen and (max-width:580px){
+        font-size: 24px;
+      }
     }
 
-    .containerButton{
+    .containerSection{
       display: flex;
-      gap: 15px;
       align-items: center;
-      justify-content: center;
+      gap: 30px;    
+      @media screen and (max-width:580px){
+      flex-direction: column;
+      }  
+
   
-      button{
-        padding: 8px 10px;
-        width: 200px;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        font-weight: 700;
+      .sectionsDados{
+        background-color: #FAFAFA;
+        padding: 14px 44px;
+        border-radius: 4px;
+        transition: transform 0.4s;
+        @media screen and (max-width:580px){
+          width: 80%;
+        }
+       
         &:hover{
-          color: #FFF;
-          background-color: #100F10;
-          border: 1px solid #FFF;
-          transition: .3s;
+        transform: scale(1.08);
         }
       }
     }
   }
 
- 
+
 
  
 }
+
+@media screen and (max-width:580px) {
+  
+  .heroImage > img{
+   max-width: 80%;
+  }
+ }
