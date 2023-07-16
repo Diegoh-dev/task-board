@@ -4,6 +4,7 @@ import styles from "./header.module.scss";
 
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
+import { GetServerSideProps } from "next";
 
 export function Header() {
   const { data: session, status } = useSession();
@@ -47,3 +48,4 @@ export function Header() {
     </header>
   );
 }
+

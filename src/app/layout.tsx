@@ -1,9 +1,13 @@
 'use client'
 import { Header } from "@/components/header";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
-const inter = Inter({ subsets: ["latin"] });
+
+const roboto = Roboto({
+  weight:[ '400','500','700'],
+  subsets: ['latin'],
+})
 
 export const metadata = {
   title: "Tarefas+ | Organize suas tarefas",
@@ -20,7 +24,7 @@ export default function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={roboto.className}>
           <Header />
           {children}
         </body>
