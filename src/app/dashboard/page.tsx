@@ -13,6 +13,7 @@ export const metadata = {
   description: "painel de tarefas",
 };
 export default function Dashboard({ res }: any) {
+  //VER OUTRA FORMA DE FAZER 
   const { data: session } = useSession();
 
   return (
