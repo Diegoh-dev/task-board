@@ -19,21 +19,14 @@ export default function Dashboard({ res }: any) {
   return (
     <>
       {!session?.user ? (
-        <div style={{
-          display:'flex',
-          flexDirection:'column',
-          alignItems:'center',
-          gap:'1rem',
-          justifyContent:'center',
-          height:'calc(100vh - 76px)'
-        }}>
+        <div className={styles.notAutenticado}>
           <h1>Você precisa fazer login</h1>
           {/* <button className={styles.loginButton} onClick={() => signIn()}>Acessar</button> */}
         </div>
       ) : (
-        <div className={styles.container}>
+        <main className={styles.container}>
           <h1>Pagina painel</h1>
-        </div>
+        </main>
       )}
     </>
   );
