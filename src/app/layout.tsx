@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <SessionProvider session={session}>
-      <html lang="en">
+      <html lang="pt-br" suppressHydrationWarning={true}>
         <body className={roboto.className}>
           <Header />
           {children}

@@ -7,32 +7,51 @@ import { authOption } from "../api/auth/[...nextauth]/route";
 import { getSession, useSession } from "next-auth/react";
 import { redirect } from "next/dist/server/api-utils";
 import { signIn, signOut } from "next-auth/react";
+import { TextArea } from "@/components/textArea";
 
 export const metadata = {
   title: "Meu painel de tarefas",
   description: "painel de tarefas",
 };
-export default function Dashboard({ res }: any) {
+export default function Dashboard() {
   //VER OUTRA FORMA DE FAZER 
   const { data: session } = useSession();
 
   return (
-    <>
+    <div className={styles.container}>
       {!session?.user ? (
         <div className={styles.notAutenticado}>
           <h1>Você precisa fazer login</h1>
           {/* <button className={styles.loginButton} onClick={() => signIn()}>Acessar</button> */}
         </div>
       ) : (
-        <main className={styles.container}>
-          <h1>Pagina painel</h1>
+        <main className={styles.main}>
+          <section className={styles.content}>
+            <div className={styles.contentform}>
+              <h1 className={styles.title}>Qual a sua tarefa</h1>
+
+              <form action="">
+                <TextArea placeholder="Digite qual a sua tarefa"/>
+
+                <div className={styles.checkBoxArea}>
+                  <input type="checkbox" name="" id="" className={styles.checkBox}/>
+                  <label htmlFor="">Deixar tarefa publica?</label>
+                </div>
+
+                <button className={styles.button} type="submit">Registrar</button>
+              </form>
+            </div>
+          </section>
         </main>
       )}
-    </>
+    </div>
   );
 }
 
 export async function getServerSideProps(context: any) {
+  console.log({context})
+
+  console.log('teste');
   const session = await getSession(context);
   return {
     props: { session },
