@@ -9,6 +9,9 @@ import { redirect } from "next/dist/server/api-utils";
 import { signIn, signOut } from "next-auth/react";
 import { TextArea } from "@/components/textArea";
 
+import {FiShare2} from 'react-icons/fi';
+import {FaTrash} from 'react-icons/fa';
+
 export const metadata = {
   title: "Meu painel de tarefas",
   description: "painel de tarefas",
@@ -31,16 +34,46 @@ export default function Dashboard() {
               <h1 className={styles.title}>Qual a sua tarefa</h1>
 
               <form action="">
-                <TextArea placeholder="Digite qual a sua tarefa"/>
+                <TextArea placeholder="Digite qual a sua tarefa" />
 
                 <div className={styles.checkBoxArea}>
-                  <input type="checkbox" name="" id="" className={styles.checkBox}/>
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    className={styles.checkBox}
+                  />
                   <label htmlFor="">Deixar tarefa publica?</label>
                 </div>
 
-                <button className={styles.button} type="submit">Registrar</button>
+                <button className={styles.button} type="submit">
+                  Registrar
+                </button>
               </form>
             </div>
+          </section>
+
+          <section className={styles.taskContainer}>
+            <h1>Minhas tarefas</h1>
+
+            <article className={styles.task}>
+              <div className={styles.tagContainer}>
+                <label className={styles.tag} htmlFor="">
+                  PUBLICO
+                </label>
+                <button className={styles.shareButton}>
+                  <FiShare2 size={22} color="#3183ff"/>
+                </button>
+              </div>
+
+              <div className={styles.taskContent}>
+                <p>MInha Primeira tarefa de exemplo!</p>
+
+                <button className={styles.trashButton}>
+                  <FaTrash size="24" color="#ea3140"/>
+                </button>
+              </div>
+            </article>
           </section>
         </main>
       )}
