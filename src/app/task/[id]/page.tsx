@@ -1,5 +1,5 @@
 'use client'
-import styles from '../styles.module.scss';
+import styles from './styles.module.scss';
 import {db} from '@/services/firebaseConnection';
 import { redirect } from 'next/navigation'
 import {
@@ -33,7 +33,7 @@ interface taskUnicaProps{
   user:string;
   taskId:string;
 }
-export default async function Task({params}:TaskProps){
+export default function Task({params}:TaskProps){
   const {id} = params;
 
   const {data: session} = useSession();
