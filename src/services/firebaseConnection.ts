@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import {getFirestore} from 'firebase/firestore';//conectar o banco de dados
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD-o3H3OqAzNjAFAHRl_vzTDoe7jkQm8U8",
+  apiKey: "AIzaSyDxRgcV5KnHHK7lqBJ4LkU4_4cyCiV4X94",
   authDomain: "tarefasplus-e7500.firebaseapp.com",
   projectId: "tarefasplus-e7500",
   storageBucket: "tarefasplus-e7500.appspot.com",
