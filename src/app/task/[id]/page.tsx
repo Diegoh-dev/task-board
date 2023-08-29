@@ -12,7 +12,7 @@ import {
 } from 'firebase/firestore';
 import { TextArea } from '@/components/textArea';
 
-import {useState,ChangeEvent,FormEvent} from 'react';
+import {useState,ChangeEvent,FormEvent,useEffect} from 'react';
 import {useSession} from 'next-auth/react';
 
 export const metadata = {
@@ -37,31 +37,48 @@ export default function Task({params}:TaskProps){
   const {id} = params;
 
   const {data: session} = useSession();
-  const [tasks,setTasks] = useState({});
+  const [tasks,setTasks] = useState({
+    tarefa:'',
+    public:false,
+    create:'',
+    user: '',
+    taskId:'',
+  });
   const [comentarios,setComentarios] = useState('');
   
   console.log(comentarios);
 
   const docRef = doc(db,"tarefas",id);
+  useEffect(()=>{
+    async function getSnap(){
+      const snapshot = await getDoc(docRef);
+      if(!snapshot.data()){
+        // usar o rediret no dashboard
+        redirect('/');
+      }
+      if(!snapshot.data()?.public){
+        redirect('/');
+      }
 
-  const snapshot = await getDoc(docRef);
-  if(!snapshot.data()){
-    // usar o rediret no dashboard
-    redirect('/');
-  }
-  if(!snapshot.data()?.public){
-    redirect('/');
-  }
+      const mileseconds = snapshot.data()?.create?.seconds * 1000;
 
-  const mileseconds = snapshot.data()?.create?.seconds * 1000;
+      const task : taskUnicaProps = {
+        tarefa:snapshot.data()?.tarefa,
+        public:snapshot.data()?.public,
+        create: new Date(mileseconds).toLocaleDateString(),
+        user: snapshot.data()?.user,
+        taskId:id,
+      }
 
-  const task : taskUnicaProps = {
-    tarefa:snapshot.data()?.tarefa,
-    public:snapshot.data()?.public,
-    create: new Date(mileseconds).toLocaleDateString(),
-    user: snapshot.data()?.user,
-    taskId:id,
-  }
+      setTasks(task)
+    }
+
+    getSnap()
+  },[])
+
+
+
+
 
   async function handleComment(e:FormEvent){
     e.preventDefault();
@@ -76,7 +93,7 @@ export default function Task({params}:TaskProps){
         create: new Date(),
         user:session?.user?.email,
         name:session?.user?.name,
-        taskid:task.taskId,
+        taskid:tasks.taskId,
 
        })
 
@@ -86,7 +103,7 @@ export default function Task({params}:TaskProps){
     }
   }
 
-  console.log(task);
+  console.log(tasks);
 
   return (
     <div className={styles.container}>
@@ -94,7 +111,7 @@ export default function Task({params}:TaskProps){
     <h1>Tarefa</h1>
     <article className={styles.task}>
       <p>
-        {task?.tarefa}
+        {tasks?.tarefa}
       </p>
     </article>
     </main>
