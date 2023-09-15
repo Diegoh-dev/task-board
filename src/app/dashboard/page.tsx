@@ -164,6 +164,14 @@ export default function Dashboard() {
           <section className={styles.taskContainer}>
             <h1>Minhas tarefas</h1>
 
+            <div
+            style={{
+              maxWidth:' 1024px',
+              width: '100%',
+              padding: '0 18px 28px 18px',
+              marginTop: '58px'
+            }}
+            >
             {task.map((tarefa, index) => (
               <article key={tarefa.id} className={styles.task}>
                 {tarefa.public && (
@@ -194,6 +202,9 @@ export default function Dashboard() {
                 </div>
               </article>
             ))}
+            </div>
+
+          
           </section>
         </main>
       )}
